@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "823399353074",
+    "project_id": "lojavirtual-ddfb3",
+    "storage_bucket": "lojavirtual-ddfb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823399353074:android:b95d127df96547ee3f5e6b",
+        "android_client_info": {
+          "package_name": "com.gqueiroz1979.loja_virtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823399353074-8msko8dtpeh6t6aubai4ujoea0gmrt90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4Dt2oQjrpmWsZI0Q-BgoFjfCZZI4zXZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823399353074-8msko8dtpeh6t6aubai4ujoea0gmrt90.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
