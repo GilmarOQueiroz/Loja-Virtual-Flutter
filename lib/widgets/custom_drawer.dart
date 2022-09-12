@@ -38,8 +38,8 @@ class CustomDrawer extends StatelessWidget {
                     Positioned(
                       top: 8.0,
                       left: 0.0,
-                      child: Text('Flutter´s\nClouhing',
-                        style: TextStyle(fontSize: 34.0,
+                      child: Text('Animais de\nEstimação',
+                        style: TextStyle(fontSize: 30.0,
                             fontWeight: FontWeight.bold),
                     ),
                     ),

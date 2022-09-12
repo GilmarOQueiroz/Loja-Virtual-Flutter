@@ -10,15 +10,15 @@ class ProductData {
   double price;
 
   List images;
-  List size;
+  List sizes;
 
   ProductData.fromDocument(DocumentSnapshot snapshot){
     id = snapshot.id;
     title = snapshot.get('title');
-    description = snapshot.get('description');
+    description = snapshot.get('descriptions');
     price = snapshot.get('price');
     images = snapshot.get('images');
-    size = snapshot.get('sizes');
+    sizes = snapshot.get('sizes');
 
 
   }
