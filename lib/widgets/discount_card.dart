@@ -1,15 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import '../models/cart_model.dart';
 
 class DiscountCard extends StatelessWidget {
-  const DiscountCard({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: ExpansionTile(
         title: Text('Cupom de desconto',
         textAlign: TextAlign.start,
@@ -18,12 +16,12 @@ class DiscountCard extends StatelessWidget {
           color: Colors.grey[700]
           ),
         ),
-        leading: const Icon(Icons.card_giftcard),
-        trailing: const Icon(Icons.add),
+        leading: Icon(Icons.card_giftcard),
+        trailing: Icon(Icons.add),
         children: <Widget>[
-          Padding(padding: const EdgeInsets.all(8.0),
+          Padding(padding: EdgeInsets.all(8.0),
             child: TextFormField(
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Digite seu Cupom'
               ),
@@ -44,7 +42,7 @@ class DiscountCard extends StatelessWidget {
                   } else{
                       CartModel.of(context).setCoupon(null, 0);
                       ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text(
+                          SnackBar(content: Text(
                               'Cupom não existente!'),
                             backgroundColor: Colors.redAccent,)
                       );

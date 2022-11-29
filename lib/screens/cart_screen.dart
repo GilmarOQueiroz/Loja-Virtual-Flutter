@@ -6,6 +6,7 @@ import 'package:loja_virtual/screens/login_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../tiles/cart_tile.dart';
+import '../widgets/cart_price.dart';
 import '../widgets/discount_card.dart';
 import '../widgets/ship_card.dart';
 
@@ -16,7 +17,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meu Carrinho'),
+        title: Text('Meu Carrinho'),
         actions: <Widget>[
           Container(
             padding: const EdgeInsets.only(right: 8.0),
@@ -25,7 +26,7 @@ class CartScreen extends StatelessWidget {
               builder: (context, child, model){
                 int p = model.products.length;
                 return Text('${p ?? 0} ${p == 1 ? 'Item' : 'Itens'}',
-                  style: const TextStyle(fontSize: 17.0),
+                  style: TextStyle(fontSize: 17.0),
                 );
               },
             ),
@@ -35,12 +36,12 @@ class CartScreen extends StatelessWidget {
       body: ScopedModelDescendant<CartModel>(
         builder: (context, child, model){
           if(model.isLoading && UserModel.of(context).isLoggedIn()){
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(),
             );
           } else if (!UserModel.of(context).isLoggedIn()){
             return Container(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -52,9 +53,9 @@ class CartScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16.0,),
+                  SizedBox(height: 16.0,),
                   RaisedButton(
-                      child: const Text('Entrar', style: TextStyle(fontSize: 18.0),),
+                      child: Text('Entrar', style: TextStyle(fontSize: 18.0),),
                       textColor: Colors.white,
                       color: Theme.of(context).primaryColor,
                       onPressed: (){
@@ -67,7 +68,7 @@ class CartScreen extends StatelessWidget {
               ),
             );
           } else if (model.products == null || model.products.length == 0){
-            return const Center(
+            return Center(
               child: Text('Nenhum produto no carrinho!',
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,),
@@ -82,8 +83,9 @@ class CartScreen extends StatelessWidget {
                       }
                   ).toList(),
                 ),
-                const DiscountCard(),
-                const ShipCard()
+                DiscountCard(),
+                ShipCard(),
+                CartPrice((){}),
               ],
             );
           }
