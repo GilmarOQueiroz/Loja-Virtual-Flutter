@@ -4,11 +4,11 @@ import 'package:loja_virtual/models/cart_model.dart';
 import 'package:loja_virtual/models/user_model.dart';
 import 'package:loja_virtual/screens/login_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
-
 import '../tiles/cart_tile.dart';
 import '../widgets/cart_price.dart';
 import '../widgets/discount_card.dart';
 import '../widgets/ship_card.dart';
+import 'order_screen.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key key}) : super(key: key);
@@ -85,7 +85,13 @@ class CartScreen extends StatelessWidget {
                 ),
                 DiscountCard(),
                 ShipCard(),
-                CartPrice((){}),
+                CartPrice(() async {
+                  String orderId = await model.finishOrder();
+                  if(orderId != null)
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context)=>OrderScreen(orderId))
+                    );
+                }),
               ],
             );
           }

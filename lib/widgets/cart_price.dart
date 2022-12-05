@@ -11,11 +11,16 @@ class CartPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: ScopedModelDescendant<CartModel>(
           builder: (context, child, model){
+            
+            double price = model.getProductsPrice();
+            double discount = model.getDiscount();
+            double ship = model.getShipPrice();
+            
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -26,17 +31,17 @@ class CartPrice extends StatelessWidget {
                 const SizedBox(height: 12.0,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[
+                  children: <Widget>[
                     Text('Subtotal'),
-                    Text('R\$ 0.00')
+                    Text('R\$ ${price.toStringAsFixed(2)}')
                   ],
                 ),
                 const Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[
+                  children: <Widget>[
                     Text('Desconto'),
-                    Text('R\$ 0.00')
+                    Text('R\$ ${discount.toStringAsFixed(2)}')
                   ],
                 ),
                 const Divider(),
@@ -44,7 +49,7 @@ class CartPrice extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text('Entrega'),
-                    Text('R\$ 0.00')
+                    Text('R\$ ${ship.toStringAsFixed(2)}')
                   ],
                 ),
                 const Divider(),
@@ -55,7 +60,7 @@ class CartPrice extends StatelessWidget {
                     const Text('Total',
                       style: TextStyle(fontWeight: FontWeight.w500),
                     ),
-                    Text('R\$ 0.00',
+                    Text('R\$ ${(price + ship - discount).toStringAsFixed(2)}',
                       style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),
                     )
                   ],
